@@ -18,18 +18,45 @@ const ChatBox = () => {
 
   const sendMessage = () => {
 
-    if (message.trim() === "") return;
+  if (message.trim() === "") return;
 
-    const newMessage = {
-      text: message,
-      sender: "me",
-    };
-
-    setMessages([...messages, newMessage]);
-
-    setMessage("");
+  const newMessage = {
+    text: message,
+    sender: "me",
   };
 
+  setMessages((prev) => [...prev, newMessage]);
+
+  setMessage("");
+
+  autoReply();
+};
+const autoReply = () => {
+
+  const replies = [
+    "Hello 👋",
+    "How are you?",
+    "Nice 😎",
+    "React is awesome 🔥",
+    "Good Job 🚀",
+    "Hafeez Devolper",
+  ];
+
+  const randomReply =
+    replies[Math.floor(Math.random() * replies.length)];
+
+  setTimeout(() => {
+
+    const botMessage = {
+      text: randomReply,
+      sender: "other",
+    };
+
+    setMessages((prev) => [...prev, botMessage]);
+
+  }, 1000);
+
+};
   return (
     <div className="flex-1 flex flex-col">
 
