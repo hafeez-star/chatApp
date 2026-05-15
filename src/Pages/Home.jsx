@@ -3,8 +3,8 @@
 
 
 
-import Sidebar from "../components/Sidebar";
-import ChatBox from "../components/ChatBox";
+import Sidebar from "../Components/Sidebar";
+import ChatBox from "../Components/ChatBox";
 
 const Home = () => {
   return (
