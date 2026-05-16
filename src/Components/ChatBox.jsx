@@ -11,52 +11,52 @@ const ChatBox = () => {
     },
 
     {
-      text: "Hi",
+      text: "Im Ahmad ",
       sender: "other",
     },
   ]);
 
   const sendMessage = () => {
 
-  if (message.trim() === "") return;
+    if (message.trim() === "") return;
 
-  const newMessage = {
-    text: message,
-    sender: "me",
-  };
-
-  setMessages((prev) => [...prev, newMessage]);
-
-  setMessage("");
-
-  autoReply();
-};
-const autoReply = () => {
-
-  const replies = [
-    "Hello 👋",
-    "How are you?",
-    "Nice 😎",
-    "React is awesome 🔥",
-    "Good Job 🚀",
-    "Hafeez Devolper",
-  ];
-
-  const randomReply =
-    replies[Math.floor(Math.random() * replies.length)];
-
-  setTimeout(() => {
-
-    const botMessage = {
-      text: randomReply,
-      sender: "other",
+    const newMessage = {
+      text: message,
+      sender: "me",
     };
 
-    setMessages((prev) => [...prev, botMessage]);
+    setMessages((prev) => [...prev, newMessage]);
 
-  }, 1000);
+    setMessage("");
 
-};
+    autoReply();
+  };
+  const autoReply = () => {
+
+    const replies = [
+      "Hello 👋",
+      "How are you?",
+      "Nice 😎",
+      "React is awesome 🔥",
+      "Good Job 🚀",
+      "Hafeez Devolper",
+    ];
+
+    const randomReply =
+      replies[Math.floor(Math.random() * replies.length)];
+
+    setTimeout(() => {
+
+      const botMessage = {
+        text: randomReply,
+        sender: "other",
+      };
+
+      setMessages((prev) => [...prev, botMessage]);
+
+    }, 1000);
+
+  };
   return (
     <div className="flex-1 flex flex-col">
 
@@ -72,11 +72,10 @@ const autoReply = () => {
 
           <div
             key={index}
-            className={`w-fit max-w-[300px] p-3 rounded-2xl ${
-              msg.sender === "me"
+            className={`w-fit max-w-[300px] p-3 rounded-2xl ${msg.sender === "me"
                 ? "bg-violet-500 text-white ml-auto"
                 : "bg-gray-200"
-            }`}
+              }`}
           >
             {msg.text}
           </div>
