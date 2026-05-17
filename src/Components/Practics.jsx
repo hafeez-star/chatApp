@@ -4,71 +4,77 @@ import { useState } from 'react'
 
 
 const Practics = () => {
-const [Message, setMessage] = useState("");
-const[Message, setMessage] = useState([
+    const [Message, setMessage] = useState("");
+    const [Messages, setMessages] = useState([
 
-{
-    text: 'hello',
-    Sender : 'hi',
-},
-{
-    text: 'hi',
-    sender: 'hellp'
-}
-])
+        {
+            text: 'hello',
+            sender: 'hi',
+        },
+        {
+            text: 'hi',
+            sender: 'hellp'
+        }
+    ])
 
-const sendMessage =() =>{
-{
-    if(Message.trim() === "") return;
-    const newMassge ={
-        text: Message,
-        sender: 'me',
-    }
-setMessage((prev) => [...prev, newMessage]);
-setMessage("");
-autoReply();
-
-}
-const autoReply = ()=>{
-const repies = [
-    "Hi",
-    "hello",
-    "how are you",
-    "nice",
-    "goood job",
-    "hafez devolper",
-]
-const randomReply = repies[Math.floor(Math.random() * repies.length)];
-setTimeout(() => {
-    const bothMEssage={
-        text: randomReply,
-        sender: 'other',
-    }
-    setMessage((prev) =>[...prev,bothMEssage]);
-},1000)}
-}
-return (
-    <div>
-      <h1>Chat Ai </h1>
-      <div>
-        {Message.map ((msg, idex) =>
-        <div key={idex}>
-          <strong>{msg.sender}:</strong> {msg.text}
-        </div>
-        )}
-
-      </div>
-    <input type="text" 
-    value={Message}
-    onChange={(e) => setMessage(e.target.value)}
-    placeholder='Type your message...'
-    inputMode='text'
+    const sendMessage = () => {
         
-    />
-    <button onClick={sendMessage}>send </button>
+            if (Message.trim() === "") return;
+            const newMessage = {
+                text: Message,
+                sender: 'me',
+            }
+            setMessages((prev) => [...prev, newMessage]);
+            setMessage("");
+            autoReply();
+
+        }
+       
+ const autoReply = () => {
+            const repies = [
+                "Hi",
+                "hello",
+                "how are you",
+                "nice",
+                "goood job",
+                "hafez devolper",
+            ]
+            const randomReply = repies[Math.floor(Math.random() * repies.length)];
+            setTimeout(() => {
+                const bothMessage = {
+                    text: randomReply,
+                    sender: 'other',
+                }
+                setMessages((prev) => [...prev, bothMessage]);
+            }, 1000)
+        }
+    return (
+        <div>
+            <h1>Chat Ai </h1>
+            <div>
+                {Messages.map((msg, idex) =>
+                    <div
+                        key={idex}
+                        className={`w-fit max-w-[300px] p-3 rounded-2xl ${msg.sender === "me"
+                            ? "bg-violet-500 text-white ml-auto"
+                            : "bg-gray-200"
+                            }`}
+                    >
+                        {msg.text}
+                    </div>
+                )}
+
+            </div>
+            <input type="text"
+                value={Message}
+                onChange={(e) => setMessage(e.target.value)}
+                placeholder='Type your message...'
+                inputMode='text'
+
+            />
+            <button onClick={sendMessage}>send </button>
 
 
-    
 
 
 
@@ -78,8 +84,9 @@ return (
 
 
 
-    </div>
-  )
+
+        </div>
+    )
 }
 
 export default Practics

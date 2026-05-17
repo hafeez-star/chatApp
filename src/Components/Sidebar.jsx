@@ -1,3 +1,5 @@
+import Practics from "./Practics";
+
 const Sidebar = () => {
   return (
     <div className="w-[350px] bg-violet-500 text-white p-5">
@@ -17,7 +19,7 @@ const Sidebar = () => {
       <div className="mt-10 space-y-4">
 
         <div className="bg-white/20 p-4 rounded-xl">
-          Ali
+          <Practics/>
         </div>
 
         <div className="bg-white/20 p-4 rounded-xl">
